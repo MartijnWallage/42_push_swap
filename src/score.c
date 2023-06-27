@@ -6,22 +6,22 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:31:17 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 14:56:06 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:05:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	score(t_list *a, t_list *b)
+int	score(t_disc *a, t_disc *b)
 {
 	int	result;
-	t_list	*current;
+	t_disc	*current;
 
 	result = 0;
 	//	Low cost for the first two being out of order
-	if (a && a->next && *(int *)(a->content) > *(int *)(a->next->content))
+	if (a && a->next && a->rank > a->next->rank)
 		result++;
-	if (b && b->next && *(int *)(b->content) < *(int *)(b->next->content))
+	if (b && b->next && b->rank < b->next->rank)
 		result++;
 	//	Higher cost for anything later being out of order	
 	current = NULL;
@@ -29,11 +29,11 @@ int	score(t_list *a, t_list *b)
 		current = a->next;
 	while (current && current->next)
 	{
-		if (*(int *)(current->content) > *(int *)(current->next->content))
+		if (current->rank > current->next->rank)
 			result += 10;
 		current = current->next;
 	}
-	if (b && a && *(int *)(b->content) > *(int *)(a->content))
+	if (b && a && b->rank > a->rank)
 		result += 2;
 	current = NULL;
 	if (b)
@@ -43,14 +43,14 @@ int	score(t_list *a, t_list *b)
 	while (current)
 	{
 		result += 1;
-		if (current->next && *(int *)(current->content) < *(int *)(current->next->content))
+		if (current->next && current->rank < current->next->rank)
 			result += 10;
 		current = current->next;
 	}
 	return (result);
 }
 
-void	calculate_scores(t_list **a, t_list **b, t_table *scores)
+void	calculate_scores(t_disc **a, t_disc **b, t_table *scores)
 {		
 	exec_op(a, b, "sa");
 	scores->sa = score(*a, *b);

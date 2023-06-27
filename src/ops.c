@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   ops.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/26 19:12:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:52:55 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static char	*get_next_op(void)
 	return (ft_strtrim(get_next_line(stdin->_fileno), " \n"));
 }
 
-void	swap(t_list **a)
+void	swap(t_disc **a)
 {
-	t_list	*second;
+	t_disc	*second;
 	
 	if (*a == NULL || (*a)->next == NULL)
 		return ;
@@ -29,37 +29,37 @@ void	swap(t_list **a)
 	*a = second;
 }
 
-void	push(t_list **a, t_list **b)
+void	push(t_disc **a, t_disc **b)
 {
-	t_list	*new_head;
+	t_disc	*new_head;
 
 	if (!a || !b || !*a)
 		return ;
 	new_head = (*a)->next;
-	ft_lstadd_front(b, *a);
+	ft_discadd_front(b, *a);
 	*a = new_head;
 }
 
-void	rotate(t_list **a)
+void	rotate(t_disc **a)
 {
-	t_list	*head;
+	t_disc	*head;
 
 	if (!a || !*a || !(*a)->next)
 		return ;
 	head = (*a)->next;
-	ft_lstlast(*a)->next = *a;
+	ft_disclast(*a)->next = *a;
 	(*a)->next = NULL;
 	*a = head;
 }
 
-void	reverse(t_list	**a)
+void	reverse(t_disc	**a)
 {
-	t_list	*head;
-	t_list	*penultimate;
+	t_disc	*head;
+	t_disc	*penultimate;
 	
 	if (!a | !*a || !(*a)->next)
 		return ;	
-	head = ft_lstlast(*a);
+	head = ft_disclast(*a);
 	penultimate = *a;
 	while (penultimate->next != head)
 		penultimate = penultimate->next;
@@ -68,7 +68,7 @@ void	reverse(t_list	**a)
 	*a = head;
 }
 
-void	exec_op(t_list **a, t_list **b, char *op)
+void	exec_op(t_disc **a, t_disc **b, char *op)
 {
 	if (op == NULL || !a || !b)
 		return ;
@@ -90,7 +90,7 @@ void	exec_op(t_list **a, t_list **b, char *op)
 		reverse(b);
 }
 
-void	exec_instructions(t_list **a, t_list **b)
+void	exec_ops(t_disc **a, t_disc **b)
 {
 	char	*op;
 
@@ -100,7 +100,7 @@ void	exec_instructions(t_list **a, t_list **b)
 	{
 		exec_op(a, b, op);
 		ft_printf("\nExec %s\n", op);
-		display_stacks(*a, *b);
+		display_discs(*a, *b);
 		free(op);
 		op = get_next_op();
 	}

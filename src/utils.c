@@ -6,48 +6,11 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 15:15:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:03:04 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-void	*free_stack(t_list *stack)
-{
-	t_list	*temp;
-
-	while (stack)
-	{
-		temp = stack->next;
-		free(stack->content);
-		free(stack);
-		stack = temp;
-	}
-	return (NULL);
-}
-
-t_list	*get_args(int argc, char **argv)
-{
-	int		i;
-	int		*content;
-	t_list	*stack;
-	t_list	*new_node;
-
-	stack = NULL;
-	i = 0;
-	while (++i < argc)
-	{
-		content = malloc(sizeof(int));
-		if (content == NULL)
-			return (free_stack(stack));
-		*content = ft_atoi(argv[i]);
-		new_node = ft_lstnew(content);
-		if (new_node == NULL)
-			return (free_stack(stack));
-		ft_lstadd_back(&stack, new_node);
-	}
-	return (stack);
-}
 
 static char	opposite_letter(char letter)
 {
@@ -86,12 +49,12 @@ char	*reverse_op(char *last)
 	return (op);
 }
 
-t_list	*get_previous_node(t_list *head, t_list *node)
+t_disc	*get_previous_node(t_disc *head, t_disc *node)
 {
-	t_list	*current;
+	t_disc	*current;
 
 	if (head == node)
-		return (ft_lstlast(head));
+		return (ft_disclast(head));
 	current = head;
 	while (current)
 	{

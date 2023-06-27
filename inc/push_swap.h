@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 14:21:00 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:00:46 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 # define WHT   "\x1B[37m"
 # define RESET "\x1B[0m"
 
+typedef struct s_disc
+{
+	int				rank;
+	int				index;
+	struct s_disc	*previous;
+	struct s_disc	*next;
+}					t_disc;
 
 typedef struct s_table
 {
@@ -39,28 +46,33 @@ typedef struct s_table
 	int		rra;
 	int		rrb;
 	int		rrr;
-}				t_table;
+}			t_table;
 
+/*	disc.c */
+void	*free_disc(t_disc *disc);
+t_disc	*ft_disclast(t_disc *disc);
+void	ft_discadd_front(t_disc **disc, t_disc *new);
+t_disc	*ft_discnew(int nbr);
+void	ft_discadd_back(t_disc **disc, t_disc *new);
+t_disc	*get_args(int argc, char **argv);
 /*	print.c	*/
-void	display_stacks(t_list *a, t_list *b);
+void	display_discs(t_disc *a, t_disc *b);
 void	display_instructions(char *instructions);
 /*	utils.c	*/
-void	*free_stack(t_list *stack);
-t_list	*get_args(int argc, char **argv);
 char	*reverse_op(char *last);
-t_list	*get_previous_node(t_list *head, t_list *node);
+t_disc	*get_previous_node(t_disc *head, t_disc *node);
 /*	instructions.c */
-void	swap(t_list **head_ref);
-void	push(t_list **a, t_list **b);
-void	exec_op(t_list **a, t_list **b, char *op);
-void	exec_instructions(t_list **a, t_list **b);
+void	swap(t_disc **head_ref);
+void	push(t_disc **a, t_disc **b);
+void	exec_op(t_disc **a, t_disc **b, char *op);
+void	exec_instructions(t_disc **a, t_disc **b);
 /*	sort.c	*/
-int		is_ascending(t_list *stack);
-int		is_sorted(t_list *a);
-char	*sort_stack(t_list **a, t_list **b, char *instructions);
+int		is_ascending(t_disc *stack);
+int		is_sorted(t_disc *a);
+char	*sort_stack(t_disc **a, t_disc **b, char *instructions);
 /*	score.c */
-int		score(t_list *a, t_list *b);
-void	calculate_scores(t_list **a, t_list **b, t_table *scores);
+int		score(t_disc *a, t_disc *b);
+void	calculate_scores(t_disc **a, t_disc **b, t_table *scores);
 char	*best_op(t_table *scores);
 
 #endif
