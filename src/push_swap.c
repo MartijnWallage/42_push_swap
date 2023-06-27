@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 18:49:44 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:39:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,41 @@ int main(int argc, char **argv)
 {
 	t_disc	*a;
 	t_disc	*b;
-	char	*instructions;
+	int		read;
+//	char	*instructions;
+	char	*op;
 	
 	if (argc < 2)
 		return (1);
 	a = get_args(argc, argv);
-	b = NULL;
 	if (a == NULL)
 		return (1);
-	instructions = malloc(1);
-	if (!instructions)
-		return (1);
-	*instructions = 0;
+	b = NULL;
+//	instructions = malloc(1);
+//	if (!instructions)
+//		return (1);
+//	*instructions = 0;
+	display_discs(a, b);
+	read = 1;
+	while (read)
+	{
+		op = get_next_line(0);
+		if (!op)
+			read = 0;
+		else
+		{
+			exec_op(&a, &b, op);
+			display_discs(a, b);
+		}
+	}
 //	instructions = sort_stack(&a, &b, instructions);
-	display_instructions(instructions);
-	display_discs(a, NULL);
+//	display_instructions(instructions);
+//	display_discs(a, NULL);
 	if (a)
 		free_disc(a);
-	if (instructions)
-		free(instructions);
+	if (b)
+		free_disc(b);
+//	if (instructions)
+//		free(instructions);
 	return (0);
 }

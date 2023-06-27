@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 18:52:55 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:34:48 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,22 @@ static char	*get_next_op(void)
 
 void	swap(t_disc **a)
 {
-	t_disc	*second;
+	t_disc	*new_first;
+	t_disc	*new_second;
+	t_disc	*temp;
 	
 	if (*a == NULL || (*a)->next == NULL)
 		return ;
-	second = (*a)->next;
-	(*a)->next = second->next;
-	second->next = *a;
-	*a = second;
+	new_first = (*a)->next;
+	new_second = *a;
+	temp = new_first->next;
+	new_first->next = new_second;
+	new_first->previous = new_second->previous;
+	new_first->index = new_second->index;
+	new_second->previous = new_first;
+	new_second->next = temp;
+	new_second->index = new_first->index + 1;
+	*a = new_first;
 }
 
 void	push(t_disc **a, t_disc **b)
