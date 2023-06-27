@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:48:17 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/21 14:18:40 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:44:42 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,4 @@ void	display_instructions(char *instructions)
 		printf("");
 	else
 		printf("%s", instructions);
-	/*
-	while (instructions)
-	{
-		ft_printf("%s", (char *)(instructions->content));
-		instructions = instructions->next;
-	}*/
 }

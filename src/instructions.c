@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/22 19:00:14 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:12:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	reverse(t_list	**a)
 
 void	exec_op(t_list **a, t_list **b, char *op)
 {
+	if (op == NULL || !a || !b)
+		return ;
 	if (!ft_strncmp(op, "sa", 2) || !ft_strncmp(op, "ss", 2))
 		swap(a);
 	if (!ft_strncmp(op, "sb", 2) || !ft_strncmp(op, "ss", 2))

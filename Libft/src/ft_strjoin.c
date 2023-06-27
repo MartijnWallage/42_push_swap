@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:55:19 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/01 16:51:10 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:27:25 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*joined;
 	char	*result;
 
+	if (s1 == NULL)
+		return ((char *)s2);
+	if (s2 == NULL)
+		return ((char *)s1);
 	joined = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (joined == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/22 18:58:14 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:21:00 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,22 @@
 # define WHT   "\x1B[37m"
 # define RESET "\x1B[0m"
 
-/*	push_swap.c	*/
-char	*sort_stacks(t_list **a, t_list **b, int depth, char *last_op);
+
+typedef struct s_table
+{
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+}				t_table;
+
 /*	print.c	*/
 void	display_stacks(t_list *a, t_list *b);
 void	display_instructions(char *instructions);
@@ -34,14 +48,19 @@ void	display_instructions(char *instructions);
 void	*free_stack(t_list *stack);
 t_list	*get_args(int argc, char **argv);
 char	*reverse_op(char *last);
+t_list	*get_previous_node(t_list *head, t_list *node);
 /*	instructions.c */
 void	swap(t_list **head_ref);
+void	push(t_list **a, t_list **b);
 void	exec_op(t_list **a, t_list **b, char *op);
 void	exec_instructions(t_list **a, t_list **b);
 /*	sort.c	*/
 int		is_ascending(t_list *stack);
-int		is_sorted(t_list *a, t_list *b);
-void	swap(t_list **head_ref);
-void	push(t_list **a, t_list **b);
+int		is_sorted(t_list *a);
+char	*sort_stack(t_list **a, t_list **b, char *instructions);
+/*	score.c */
+int		score(t_list *a, t_list *b);
+void	calculate_scores(t_list **a, t_list **b, t_table *scores);
+char	*best_op(t_table *scores);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 17:51:07 by mwallage          #+#    #+#              #
-#    Updated: 2023/06/20 16:13:17 by mwallage         ###   ########.fr        #
+#    Updated: 2023/06/27 14:19:02 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ CFLAGS	:= -Wall -Werror -Wextra
 SRCDIR	:= src
 OBJDIR	:= obj
 SRC 	:= $(SRCDIR)/instructions.c $(SRCDIR)/print.c $(SRCDIR)/push_swap.c \
-			$(SRCDIR)/sort.c $(SRCDIR)/utils.c
+			$(SRCDIR)/sort.c $(SRCDIR)/utils.c $(SRCDIR)/score.c
 SRC2	:= $(SRCDIR)/checker.c $(SRCDIR)/instructions.c $(SRCDIR)/print.c \
-			$(SRCDIR)/sort.c $(SRCDIR)/utils.c
+			$(SRCDIR)/sort.c $(SRCDIR)/utils.c $(SRCDIR)/score.c
 OBJ		:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 OBJ2	:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC2))
 NAME	:= push_swap

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/22 19:02:41 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:15:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	*reverse_op(char *last)
 {
 	char	*op;
 
+	if (last == NULL)
+		return (NULL);
 	op = malloc(4);
 	if (op == NULL)
 		return (NULL);
@@ -82,4 +84,20 @@ char	*reverse_op(char *last)
 		op[2] = last[1];
 	}
 	return (op);
+}
+
+t_list	*get_previous_node(t_list *head, t_list *node)
+{
+	t_list	*current;
+
+	if (head == node)
+		return (ft_lstlast(head));
+	current = head;
+	while (current)
+	{
+		if (current->next == node)
+			return (current);
+		current = current->next;
+	}
+	return (NULL);
 }
