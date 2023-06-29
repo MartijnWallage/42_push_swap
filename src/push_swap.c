@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 19:39:26 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:50:43 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	read = 1;
 	while (read)
 	{
-		op = get_next_line(0);
+		op = get_next_op();
 		if (!op)
 			read = 0;
 		else

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 19:03:04 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:28:55 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*reverse_op(char *last)
 	return (op);
 }
 
-t_disc	*get_previous_node(t_disc *head, t_disc *node)
+t_disc	*get_prev_node(t_disc *head, t_disc *node)
 {
 	t_disc	*current;
 

@@ -6,51 +6,57 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 19:34:48 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:09:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static char	*get_next_op(void)
-{
-	return (ft_strtrim(get_next_line(stdin->_fileno), " \n"));
-}
-
 void	swap(t_disc **a)
 {
-	t_disc	*new_first;
-	t_disc	*new_second;
-	t_disc	*temp;
+	t_disc	*first;
+	t_disc	*second;
 	
 	if (*a == NULL || (*a)->next == NULL)
-		return ;
-	new_first = (*a)->next;
-	new_second = *a;
-	temp = new_first->next;
-	new_first->next = new_second;
-	new_first->previous = new_second->previous;
-	new_first->index = new_second->index;
-	new_second->previous = new_first;
-	new_second->next = temp;
-	new_second->index = new_first->index + 1;
-	*a = new_first;
+		return ;	
+	first = *a;
+	second = (*a)->next;
+	second->index = 0;
+	first->index = 1;
+	first->next = second->next;
+	second->next = first;
+	*a = second;
 }
 
 void	push(t_disc **a, t_disc **b)
 {
-	t_disc	*new_head;
+	t_disc	*head;
+	t_disc	*current;	
 
 	if (!a || !b || !*a)
+		return ;	
+	if ((*a)->next == NULL)
+	{
+		ft_discadd_front(b, *a);
+		*a = NULL;
 		return ;
-	new_head = (*a)->next;
+	}
+	head = (*a)->next;
+	current = head;
+	while (current != NULL)
+	{
+		current->index--;
+		current = current->next;
+	}
 	ft_discadd_front(b, *a);
-	*a = new_head;
+	*a = head;
 }
 
 void	rotate(t_disc **a)
 {
 	t_disc	*head;
+	t_disc	*current;
+	int		i;
 
 	if (!a || !*a || !(*a)->next)
 		return ;
@@ -58,12 +64,22 @@ void	rotate(t_disc **a)
 	ft_disclast(*a)->next = *a;
 	(*a)->next = NULL;
 	*a = head;
+	current = head;
+	i = 0;
+	while (current)
+	{
+		current->index = i;
+		i++;
+		current = current->next;
+	}
 }
 
 void	reverse(t_disc	**a)
 {
 	t_disc	*head;
 	t_disc	*penultimate;
+	t_disc	*current;
+	int		i;
 	
 	if (!a | !*a || !(*a)->next)
 		return ;	
@@ -74,6 +90,14 @@ void	reverse(t_disc	**a)
 	penultimate->next = NULL;
 	head->next = *a;
 	*a = head;
+	current = head;
+	i = 0;
+	while (current)
+	{
+		current->index = i;
+		i++;
+		current = current->next;
+	}
 }
 
 void	exec_op(t_disc **a, t_disc **b, char *op)

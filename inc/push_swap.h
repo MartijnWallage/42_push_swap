@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/27 19:39:31 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:05:27 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_disc
 {
 	int				rank;
 	int				index;
-	struct s_disc	*previous;
 	struct s_disc	*next;
 }					t_disc;
 
@@ -48,7 +47,10 @@ typedef struct s_table
 	int		rrr;
 }			t_table;
 
+/* push_swap.c */
+char		*get_next_op(void);
 /*	disc.c */
+int			disc_size(t_disc *disc);
 void		*free_disc(t_disc *disc);
 t_disc		*ft_disclast(t_disc *disc);
 void		ft_discadd_front(t_disc **disc, t_disc *new);
@@ -60,7 +62,7 @@ void		display_discs(t_disc *a, t_disc *b);
 void		display_instructions(char *instructions);
 /*	utils.c	*/
 char		*reverse_op(char *last);
-t_disc		*get_previous_node(t_disc *head, t_disc *node);
+t_disc		*get_prev_node(t_disc *head, t_disc *node);
 /*	ops.c */
 void		swap(t_disc **head_ref);
 void		push(t_disc **a, t_disc **b);
