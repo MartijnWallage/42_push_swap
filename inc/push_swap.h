@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/29 19:05:27 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:15:59 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@
 # define CYN   "\x1B[36m"
 # define WHT   "\x1B[37m"
 # define RESET "\x1B[0m"
+# define SA		0
+# define SB		1
+# define SS		2
+# define PA		3
+# define PB		4
+# define RA		5
+# define RB		6
+# define RR		7
+# define RRA	8
+# define RRB	9
+# define RRR	10
 
 typedef struct s_disc
 {
@@ -34,18 +45,9 @@ typedef struct s_disc
 
 typedef struct s_table
 {
-	int		sa;
-	int		sb;
-	int		ss;
-	int		pa;
-	int		pb;
-	int		ra;
-	int		rb;
-	int		rr;
-	int		rra;
-	int		rrb;
-	int		rrr;
-}			t_table;
+	char	*op;
+	int		try;
+}			t_table; 
 
 /* push_swap.c */
 char		*get_next_op(void);
@@ -61,7 +63,6 @@ t_disc		*get_args(int argc, char **argv);
 void		display_discs(t_disc *a, t_disc *b);
 void		display_instructions(char *instructions);
 /*	utils.c	*/
-char		*reverse_op(char *last);
 t_disc		*get_prev_node(t_disc *head, t_disc *node);
 /*	ops.c */
 void		swap(t_disc **head_ref);
@@ -71,7 +72,8 @@ void		exec_instructions(t_disc **a, t_disc **b);
 /*	sort.c	*/
 int			is_ascending(t_disc *stack);
 int			is_sorted(t_disc *a);
-char		*sort_stack(t_disc **a, t_disc **b, char *instructions);
+int			disc_sorted(t_disc *disc, int a);
+char		*sort_stack(t_disc **a, t_disc **b);
 /*	score.c */
 int			score(t_disc *a, t_disc *b);
 void		calculate_scores(t_disc **a, t_disc **b, t_table *scores);

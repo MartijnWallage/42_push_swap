@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/29 18:50:43 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:31:48 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,25 @@
 int main(int argc, char **argv)
 {
 	t_disc	*a;
-	t_disc	*b;
-	int		read;
-//	char	*instructions;
-	char	*op;
+	t_disc	**b;
+	char	*instructions;
 	
 	if (argc < 2)
 		return (1);
 	a = get_args(argc, argv);
 	if (a == NULL)
 		return (1);
-	b = NULL;
-//	instructions = malloc(1);
-//	if (!instructions)
-//		return (1);
-//	*instructions = 0;
-	display_discs(a, b);
-	read = 1;
+	display_discs(a, NULL);
+	b = malloc(sizeof(t_disc *));
+	if (!b)
+		return (1);
+	*b = NULL;
+	instructions = sort_stack(&a, b);
+	if (!instructions)
+		return (1);
+	display_instructions(instructions);
+	display_discs(a, *b);
+/*	read = 1;
 	while (read)
 	{
 		op = get_next_op();
@@ -42,15 +44,13 @@ int main(int argc, char **argv)
 			exec_op(&a, &b, op);
 			display_discs(a, b);
 		}
-	}
+		ft_printf("Stack a is %d steps away from being disc_sorted\n", disc_sorted(a, 0));
+		ft_printf("Stack b is %d steps away from being disc_sorted\n", disc_sorted(b, 1));
+	}*/
 //	instructions = sort_stack(&a, &b, instructions);
 //	display_instructions(instructions);
 //	display_discs(a, NULL);
-	if (a)
-		free_disc(a);
-	if (b)
-		free_disc(b);
-//	if (instructions)
-//		free(instructions);
+	free_disc(a);
+	free(instructions);
 	return (0);
 }

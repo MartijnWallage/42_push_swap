@@ -6,43 +6,72 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:25:41 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/29 19:05:57 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:19:00 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+typedef struct s_rank
+{
+	int	value;
+	int index;
+}		t_rank;
+
 void	set_rank(t_disc *disc)
 {
-	disc++;
-/*	t_disc	*current;
+	t_rank	*ranks;
+	t_disc	*current;
 	int		*ranked;
 	int		size;
 	int		i;
-	int		min;
 	
 	size = disc_size(disc);
+	ranks = malloc(sizeof(t_rank) * size);
+	if (ranks == NULL)
+		return ;
 	ranked = malloc(sizeof(int) * size);
 	if (ranked == NULL)
+	{
+		free(ranks);
 		return ;
-	i = 0;
-	while (i < size)
-	{
-		ranked[i] = 0;
-		i++;
 	}
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
+		ranked[i] = 0;
+	i = -1;
+	while (++i < size)
 	{
+		current = disc;
+		while (current && ranked[current->index])
+			current = current->next;
+		ranks[i].value = current->rank;
+		ranks[i].index = current->index;
+		ranked[current->index] = 1;
 		current = disc;
 		while (current)
 		{
-			if (!ranked[current->index] && current->rank < min)
+			if (!ranked[current->index] && current->rank < ranks[i].value)
 			{
-				ranked[current->index] = rank;
+				ranked[ranks[i].index] = 0;
+				ranks[i].value = current->rank;
+				ranks[i].index = current->index;
+				ranked[current->index] = 1;
 			}
+			current = current->next;
 		}
-	}*/
+	}
+	current = disc;
+	while (current)
+	{
+		i = 0;
+		while (ranks[i].index != current->index)
+			i++;
+		current->rank = i;
+		current = current->next;
+	}
+	free(ranked);
+	free(ranks);
 }
 
 char	*get_next_op(void)
