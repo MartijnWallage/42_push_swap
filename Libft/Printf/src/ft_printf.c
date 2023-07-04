@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:07:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/14 17:44:36 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:29:06 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,15 @@ static int	read_format(const char *format, t_print *tab)
 	return (chars_written);
 }
 
+#include <stdio.h>
 int	ft_printf(const char *format, ...)
 {
 	int		chars_written;
+//	static int	count;
 	t_print	*tab;
 
+//	count++;
+//	printf("Nr of instructions: %d\n", count);
 	if (format == NULL)
 		return (-1);
 	tab = malloc(sizeof(t_print));

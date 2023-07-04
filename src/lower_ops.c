@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 16:35:00 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:11:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	swap(t_disc **a)
 	
 	if (*a == NULL || (*a)->next == NULL)
 		return ;
-	ft_printf("s%c\n", (*a)->stack);
 	first = *a;
 	second = (*a)->next;
 	second->index = 0;
@@ -40,7 +39,6 @@ void	push(t_disc **a, t_disc **b)
 		(*a)->stack = 'b';
 	else
 		(*a)->stack = 'a';
-	ft_printf("p%c\n", (*a)->stack);
 	if ((*a)->next == NULL)
 	{
 		ft_discadd_front(b, *a);
@@ -66,7 +64,6 @@ void	rotate(t_disc **a)
 
 	if (!a || !*a || !(*a)->next)
 		return ;
-	ft_printf("r%c\n", (*a)->stack);
 	head = (*a)->next;
 	ft_disclast(*a)->next = *a;
 	(*a)->next = NULL;
@@ -90,7 +87,6 @@ void	reverse_rotate(t_disc	**a)
 	
 	if (!a | !*a || !(*a)->next)
 		return ;
-	ft_printf("rr%c\n", (*a)->stack);
 	head = ft_disclast(*a);
 	penultimate = *a;
 	while (penultimate->next != head)

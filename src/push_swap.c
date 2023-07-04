@@ -6,11 +6,20 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 16:42:55 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:38:24 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+/*
+ *	Some things to take care of:
+ *	Remove traces.
+ * 	Remove this.
+ * 	Remove // comments
+ * 	Error handling
+ * 	No duplicates are allowed
+ */
 
 int main(int argc, char **argv)
 {
@@ -22,13 +31,13 @@ int main(int argc, char **argv)
 	a = get_args(argc, argv);
 	if (a == NULL)
 		return (1);
-	display_discs(a, NULL);
+//	display_discs(a, NULL);
 	b = malloc(sizeof(t_disc *));
 	if (!b)
 		return (1);
 	*b = NULL;
 	sort_stack(&a, b);
-	display_discs(a, *b);
+//	display_discs(a, *b);
 /*	read = 1;
 	while (read)
 	{

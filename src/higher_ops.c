@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 17:04:14 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:00:28 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@ void	move_to_front(t_disc **disc, int index)
 	if (index <= len - index)
 	{
 		while (++i < index)
+		{
 			rotate(disc);
+			ft_printf("r%c\n", (*disc)->stack);
+		}
 	}
 	else
 	{
 		while (++i < len - index)
+		{
 			reverse_rotate(disc);
+			ft_printf("rr%c\n", (*disc)->stack);
+		}
 	}
 }
 
