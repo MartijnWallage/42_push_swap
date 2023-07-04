@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/03 16:12:16 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:59:49 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ t_disc	*next(t_disc *head, t_disc *node)
 		return (node->next);
 }
 
-int	get_lowest_rank(t_disc *a)
+int	get_lowest_rank(t_disc *disc)
 {
 	t_disc	*current;
 	int		lowest_rank;
 
-	if (!a)
+	if (!disc)
 		return (-1);
-	current = a;
+	current = disc;
 	lowest_rank = current->rank;
 	while (current)
 	{
@@ -54,6 +54,23 @@ int	get_lowest_rank(t_disc *a)
 	return (lowest_rank);
 }
 
+int	get_highest_rank(t_disc *disc)
+{
+	t_disc	*current;
+	int		highest_rank;
+
+	if (!disc)
+		return (-1);
+	current = disc;
+	highest_rank = current->rank;
+	while (current)
+	{
+		if (current->rank > highest_rank)
+			highest_rank = current->rank;
+		current = current->next;
+	}
+	return (highest_rank);
+}
 int	get_index(t_disc *disc, int rank)
 {
 	t_disc	*current;
@@ -68,7 +85,7 @@ int	get_index(t_disc *disc, int rank)
 	return (-1);
 }
 
-int	is_sorted_pair(t_disc *disc, char stack, t_disc *node, t_disc *next_node)
+int	is_sorted_pair(t_disc *disc, t_disc *node, t_disc *next_node)
 {
 	int	lowest_rank;
 
@@ -77,16 +94,16 @@ int	is_sorted_pair(t_disc *disc, char stack, t_disc *node, t_disc *next_node)
 	lowest_rank = get_lowest_rank(disc);
 	next_node = next(disc, node);
 	if (node->rank == lowest_rank)
-		return (stack == 'a');
+		return (disc->stack == 'a');
 	if (next_node->rank == lowest_rank)
-		return (stack == 'b');
+		return (disc->stack == 'b');
 	if (node->rank < next_node->rank)
-		return (stack == 'a');
+		return (disc->stack == 'a');
 	else
-		return (stack == 'b');
+		return (disc->stack == 'b');
 }
 
-int		first_wrong_pair(t_disc *a, char stack)
+int		first_wrong_pair(t_disc *a)
 {
 	t_disc	*current;
 	int		lowest_rank;
@@ -97,8 +114,8 @@ int		first_wrong_pair(t_disc *a, char stack)
 	lowest_rank = get_lowest_rank(a);
 	while (current)
 	{
-		if ((stack == 'a' && next(a, current)->rank != lowest_rank && current->rank > next(a, current)->rank)
-		|| (stack == 'b' && current->rank != lowest_rank && current->rank < next(a, current)->rank))
+		if ((a->stack == 'a' && next(a, current)->rank != lowest_rank && current->rank > next(a, current)->rank)
+		|| (a->stack == 'b' && current->rank != lowest_rank && current->rank < next(a, current)->rank))
 			return (current->index);
 		current = current->next;
 	}

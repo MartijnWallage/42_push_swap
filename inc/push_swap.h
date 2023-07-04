@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/03 16:29:02 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:42:55 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 
 typedef struct s_disc
 {
+	char			stack;
 	int				rank;
 	int				index;
 	struct s_disc	*next;
@@ -66,24 +67,25 @@ void	display_instructions(char *instructions);
 t_disc	*previous(t_disc *head, t_disc *node);
 t_disc	*next(t_disc *head, t_disc *node);
 int		get_lowest_rank(t_disc *a);
+int		get_highest_rank(t_disc *disc);
 int		get_index(t_disc *disc, int rank);
-int		is_sorted_pair(t_disc *disc, char stack, t_disc *node, t_disc *next_node);
+int		is_sorted_pair(t_disc *disc, t_disc *node, t_disc *next_node);
 /*	lower_ops.c */
 void	swap(t_disc **head_ref);
 void	push(t_disc **a, t_disc **b);
 void	rotate(t_disc **a);
-void	reverse_rotate(t_disc	**a);
+void	reverse_rotate(t_disc **a);
 /*	higher_ops	*/
-int		first_wrong_pair(t_disc *a, char stack);
-char	*move_to_front(t_disc **a, char stack, int index);
+int		first_wrong_pair(t_disc *a);
+void	move_to_front(t_disc **a, int index);
 void	exec_op(t_disc **a, t_disc **b, char *op);
 /*	check_ sort.c	*/
 int		is_ascending(t_disc *disc);
 int		is_sorted(t_disc *disc);
-int		disc_sorted(t_disc *disc, char which_stack);
-int		descending(t_disc *b);
-int 	ascending(t_disc *a);
+int		discsort_fails(t_disc *disc);
+int		ascending_pairs(t_disc *b);
+int 	descending_pairs(t_disc *a);
 /*	sort.c */
-char	*sort_stack(t_disc **a, t_disc **b);
+void	sort_stack(t_disc **a, t_disc **b);
 
 #endif

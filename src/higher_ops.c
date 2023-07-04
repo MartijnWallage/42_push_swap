@@ -6,57 +6,31 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/03 16:33:00 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:04:14 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-char	*move_to_front(t_disc **a, char stack, int index)
+void	move_to_front(t_disc **disc, int index)
 {
-	char	*instructions;
-	char	*temp;
-	char	*op;
 	int		len;
 	int		i;
 
-	instructions = malloc(1);
-	if (!instructions)
-		return (NULL);
-	*instructions = 0;
-	len = disc_size(*a);
+	if (!disc || !*disc || index == 0)
+		return ;
+	len = disc_size(*disc);
 	i = -1;
 	if (index <= len - index)
 	{
-		if (stack == 'a')
-			op = ft_strdup(RA);
-		else
-			op = ft_strdup(RB);
 		while (++i < index)
-		{
-			rotate(a);
-			temp = instructions;
-			instructions = ft_strjoin(op, instructions);
-			free(temp);
-		}
-		free(op);
+			rotate(disc);
 	}
 	else
 	{
-		if (stack == 'a')
-			op = ft_strdup(RRA);
-		else
-			op = ft_strdup(RRB);
 		while (++i < len - index)
-		{
-			reverse_rotate(a);
-			temp = instructions;
-			instructions = ft_strjoin(op, instructions);
-			free(temp);
-		}
-		free(op);
+			reverse_rotate(disc);
 	}
-	return (instructions);
 }
 
 void	exec_op(t_disc **a, t_disc **b, char *op)

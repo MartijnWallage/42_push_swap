@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/03 15:03:42 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:26:44 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,7 @@ int	is_ascending(t_disc *disc)
 	return (1);
 }
 
-int	is_sorted(t_disc *disc)
-{
-	if (is_ascending(disc))
-		return (1);
-	return (0);
-}
-
-int ascending(t_disc *a)
+int descending_pairs(t_disc *a)
 {
 	int		nfails;
 	t_disc	*current;
@@ -50,12 +43,12 @@ int ascending(t_disc *a)
 	}
 	if (current && current->rank > a->rank)
 		nfails++;
-	if (nfails)
-		nfails--;
+	if (nfails == 0)
+		nfails++;
 	return (nfails);
 }
 
-int descending(t_disc *b)
+int ascending_pairs(t_disc *b)
 {
 	int		nfails;
 	t_disc	*current;
@@ -70,17 +63,25 @@ int descending(t_disc *b)
 	}
 	if (current && current->rank < b->rank)
 		nfails++;
-	if (nfails)
-		nfails--;
+	if (nfails == 0)
+		nfails++;
 	return (nfails);
 }
 
-int	disc_sorted(t_disc *disc, char which_stack)
+int	is_sorted(t_disc *disc)
+{
+	if (disc->stack == 'a')
+		return (is_ascending(disc));
+	else
+		return (descending_pairs(disc) == 1);
+}
+
+int	discsort_fails(t_disc *disc)
 {
 	if (!disc)
 		return (0);
-	if (which_stack == 'a')
-		return (ascending(disc));
+	if (disc->stack == 'a')
+		return (descending_pairs(disc) - 1);
 	else
-		return (descending(disc));
+		return (ascending_pairs(disc) - 1);
 }

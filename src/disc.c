@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:12:36 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/29 19:05:22 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:08:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_discadd_back(t_disc **disc, t_disc *new)
 		new->index = current->index + 1;
 	}
 }
+
 t_disc	*ft_disclast(t_disc *disc)
 {
 	if (disc == NULL)
@@ -97,6 +98,7 @@ t_disc	*ft_discnew(int nbr)
 		return (NULL);
 	newnode->rank = nbr;
 	newnode->index = 0;
+	newnode->stack = 'a';
 	newnode->next = NULL;
 	return (newnode);
 }
