@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 18:34:06 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:46:39 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	sort_stack(t_disc **a, t_disc **b)
 {
 	int		i;
-	int		lowest_rank;
 	int		size;
 
 	if (!*b && is_sorted(*a))
@@ -58,7 +57,6 @@ void	sort_stack(t_disc **a, t_disc **b)
 		sort_stack(a, b);
 		return ;
 	}
-	lowest_rank = get_lowest_rank(*b);
 	if (discsort_fails(*a))
 	{
 		i = first_wrong_pair(*a);
