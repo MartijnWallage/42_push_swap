@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 16:42:55 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/05 16:18:52 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,15 @@ void	reverse_rotate(t_disc **a);
 int		first_wrong_pair(t_disc *a);
 void	move_to_front(t_disc **a, int index);
 void	exec_op(t_disc **a, t_disc **b, char *op);
+/*	try_ops.c */
+int		try_swap(t_disc **a);
+int		try_push(t_disc **a, t_disc **b);
+int		try_rotate(t_disc **a, int target);
+int		try_reverse_rotate(t_disc **a, int target);
 /*	check_ sort.c	*/
 int		is_ascending(t_disc *disc);
 int		is_sorted(t_disc *disc);
-int		discsort_fails(t_disc *disc);
-int		ascending_pairs(t_disc *b);
-int 	descending_pairs(t_disc *a);
+int		wrong_pairs(t_disc *disc);
 /*	sort.c */
 void	sort_stack(t_disc **a, t_disc **b);
 

@@ -6,7 +6,7 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 17:51:07 by mwallage          #+#    #+#              #
-#    Updated: 2023/07/03 13:55:51 by mwallage         ###   ########.fr        #
+#    Updated: 2023/07/05 16:19:26 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,12 @@ SRCDIR	:= src
 OBJDIR	:= obj
 SRC 	:= $(SRCDIR)/lower_ops.c $(SRCDIR)/print.c $(SRCDIR)/push_swap.c \
 			$(SRCDIR)/sort.c $(SRCDIR)/check_sort.c $(SRCDIR)/utils.c \
-			$(SRCDIR)/disc.c $(SRCDIR)/args.c $(SRCDIR)/higher_ops.c
+			$(SRCDIR)/disc.c $(SRCDIR)/args.c $(SRCDIR)/higher_ops.c \
+			$(SRCDIR)/try_ops.c
 SRC2	:= $(SRCDIR)/checker.c $(SRCDIR)/lower_ops.c $(SRCDIR)/print.c \
 			$(SRCDIR)/sort.c $(SRCDIR)/check_sort.c $(SRCDIR)/utils.c \
-			$(SRCDIR)/disc.c $(SRCDIR)args.c $(SRCDIR)/higher_ops.c
+			$(SRCDIR)/disc.c $(SRCDIR)args.c $(SRCDIR)/higher_ops.c \
+			$(SRCDIR)/try_ops.c
 OBJ		:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 OBJ2	:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC2))
 NAME	:= push_swap
