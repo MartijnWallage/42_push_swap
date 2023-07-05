@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/05 15:28:51 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:27:20 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 /*
  *	Some things to take care of:
- *	4 1 3 2 5 is taking too many instructions
+ * 	Now I push the number of the first wrong pair. Better:
+ *	Calculate the pushing costs for each number, and push the cheapest one.
+ *	Use double rotate.
+ *	3 2 1 5 4 is taking too many instructions
  *	100 and 500 are taking too many instructions
- * 	smarter rotating
  *	Remove traces.
  * 	Remove // comments
  * 	Error handling

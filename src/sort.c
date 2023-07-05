@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/05 18:03:21 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:13:08 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,24 @@ void	sort_stack(t_disc **a, t_disc **b)
 	{
 //		ft_printf("A not yet disc sorted...\n");
 //		display_discs(*a, *b);
+		i = first_wrong_pair(*a);
+		move_to_front(a, i);
 		if (try_swap(a))
 		{
 			ft_printf("sa\n");
 			sort_stack(a, b);
-			return ;
 		}
-		i = first_wrong_pair(*a);
-		move_to_front(a, i);
-		if (try_push(a, b))
+		else if (try_push(a, b))
 		{
 			ft_printf("pb\n");
 			sort_stack(a, b);
-			return ;
 		}
-		move_to_front(b, find_place(*b, (*a)->rank));
-		push(a, b);
-		ft_printf("pb\n");
-		sort_stack(a, b);
+		else
+		{
+			move_to_front(b, find_place(*b, (*a)->rank));
+			push(a, b);
+			ft_printf("pb\n");
+			sort_stack(a, b);
+		}
 	}
 }
