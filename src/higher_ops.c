@@ -6,11 +6,25 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 18:00:28 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:17:57 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+void	double_revrot(t_disc **a, t_disc **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_printf("rrr\n");
+}
+
+void	double_rot(t_disc **a, t_disc **b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
+}
 
 void	move_to_front(t_disc **disc, int index)
 {

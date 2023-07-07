@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/05 16:18:52 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:22:23 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_disc
 	char			stack;
 	int				rank;
 	int				index;
+	int				cost;
 	struct s_disc	*next;
 }					t_disc;
 
@@ -69,16 +70,19 @@ t_disc	*next(t_disc *head, t_disc *node);
 int		get_lowest_rank(t_disc *a);
 int		get_highest_rank(t_disc *disc);
 int		get_index(t_disc *disc, int rank);
-int		is_sorted_pair(t_disc *disc, t_disc *node, t_disc *next_node);
+int		min(int a, int b);
+int		max(int a, int b);
+t_disc	*get_by_index(t_disc *disc, int index);
 /*	lower_ops.c */
 void	swap(t_disc **head_ref);
 void	push(t_disc **a, t_disc **b);
 void	rotate(t_disc **a);
 void	reverse_rotate(t_disc **a);
 /*	higher_ops	*/
-int		first_wrong_pair(t_disc *a);
 void	move_to_front(t_disc **a, int index);
 void	exec_op(t_disc **a, t_disc **b, char *op);
+void	double_revrot(t_disc **a, t_disc **b);
+void	double_rot(t_disc **a, t_disc **b);
 /*	try_ops.c */
 int		try_swap(t_disc **a);
 int		try_push(t_disc **a, t_disc **b);
@@ -87,8 +91,13 @@ int		try_reverse_rotate(t_disc **a, int target);
 /*	check_ sort.c	*/
 int		is_ascending(t_disc *disc);
 int		is_sorted(t_disc *disc);
+int		is_sorted_pair(t_disc *disc, t_disc *node);
+int		first_wrong_pair(t_disc *a);
 int		wrong_pairs(t_disc *disc);
 /*	sort.c */
 void	sort_stack(t_disc **a, t_disc **b);
+void	calc_pushcosts(t_disc *a, t_disc *b);
+t_disc	*find_cheapest(t_disc *disc);
+void	double_move_to_front(t_disc **a, int target_a, t_disc **b, int target_b);
 
 #endif

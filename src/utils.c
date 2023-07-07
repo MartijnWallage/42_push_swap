@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 15:59:49 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:22:15 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,39 +85,28 @@ int	get_index(t_disc *disc, int rank)
 	return (-1);
 }
 
-int	is_sorted_pair(t_disc *disc, t_disc *node, t_disc *next_node)
+t_disc	*get_by_index(t_disc *disc, int index)
 {
-	int	lowest_rank;
+	int	i;
 
-	if (!disc || !node || !next_node || node == next_node)
-		return (1);
-	lowest_rank = get_lowest_rank(disc);
-	next_node = next(disc, node);
-	if (node->rank == lowest_rank)
-		return (disc->stack == 'a');
-	if (next_node->rank == lowest_rank)
-		return (disc->stack == 'b');
-	if (node->rank < next_node->rank)
-		return (disc->stack == 'a');
-	else
-		return (disc->stack == 'b');
+	i = -1;
+	while (++i < index)
+		disc = disc->next;
+	return (disc);
 }
 
-int		first_wrong_pair(t_disc *a)
+int	min(int a, int b)
 {
-	t_disc	*current;
-	int		lowest_rank;
-	
-	if (!a || !(a->next))
-		return (-1);
-	current = a;
-	lowest_rank = get_lowest_rank(a);
-	while (current)
-	{
-		if ((a->stack == 'a' && next(a, current)->rank != lowest_rank && current->rank > next(a, current)->rank)
-		|| (a->stack == 'b' && current->rank != lowest_rank && current->rank < next(a, current)->rank))
-			return (current->index);
-		current = current->next;
-	}
-	return (-1);
+	if (a <= b)
+		return (a);
+	else
+		return (b);
+}
+
+int	max(int a, int b)
+{
+	if (a >= b)
+		return (a);
+	else
+		return (b);
 }

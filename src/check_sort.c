@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/05 17:07:23 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:48:09 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,41 @@ int	is_sorted(t_disc *disc)
 		return (is_ascending(disc));
 	else
 		return (wrong_pairs(disc) == 0);
+}
+
+int	is_sorted_pair(t_disc *disc, t_disc *node)
+{
+	t_disc	*next_node;
+
+	if (!disc || !node)
+		return (1);
+	next_node = next(disc, node);
+	if (disc->stack == 'a' && next_node->rank == 0)
+		return (1);
+	if (disc->stack == 'b' && next_node->rank == get_highest_rank(disc))
+		return (1);
+	if (disc->stack == 'a' && node->rank < next_node->rank)
+		return (1);
+	if (disc->stack == 'b' && node->rank > next_node->rank)
+		return (1);
+	return (0);
+}
+
+int		first_wrong_pair(t_disc *a)
+{
+	t_disc	*current;
+	int		lowest_rank;
+	
+	if (!a || !(a->next))
+		return (-1);
+	current = a;
+	lowest_rank = get_lowest_rank(a);
+	while (current)
+	{
+		if ((a->stack == 'a' && next(a, current)->rank != lowest_rank && current->rank > next(a, current)->rank)
+		|| (a->stack == 'b' && current->rank != lowest_rank && current->rank < next(a, current)->rank))
+			return (current->index);
+		current = current->next;
+	}
+	return (-1);
 }

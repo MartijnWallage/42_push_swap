@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:12:36 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 16:08:19 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:57:50 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ t_disc	*ft_discnew(int nbr)
 	newnode->rank = nbr;
 	newnode->index = 0;
 	newnode->stack = 'a';
+	newnode->cost = -1;
 	newnode->next = NULL;
 	return (newnode);
 }

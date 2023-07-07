@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:48:17 by mwallage          #+#    #+#             */
-/*   Updated: 2023/06/29 17:49:28 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:25:43 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	display_discs(t_disc *a, t_disc *b)
 	{
 		if (a)
 		{
-			ft_printf("a[%d]=%d\t\t", a->index, a->rank);
+			ft_printf("a[%d]=%d\t\t", a->cost, a->rank);
 			a = a->next;
 		}
 		else
