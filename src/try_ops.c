@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/05 16:20:12 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:26:59 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	try_swap(t_disc **a)
 	before = wrong_pairs(*a);
 	swap(a);
 	if (wrong_pairs(*a) < before)
+	{
+		ft_printf("s%c\n", (*a)->stack);
 		return (1);
+	}
 	swap(a);
 	return (0);
 }
@@ -32,7 +35,10 @@ int	try_push(t_disc **a, t_disc **b)
 		return (0);
 	push(a, b);
 	if (wrong_pairs(*b) == 0)
+	{
+		ft_printf("p%c\n", (*b)->stack);
 		return (1);
+	}
 	push(b, a);
 	return (0);
 }
@@ -57,7 +63,10 @@ int	try_rotate(t_disc **a, int target)
 	before = movetofront_cost(*a, target);
 	rotate(a);
 	if (movetofront_cost(*a, target) < before)
+	{
+		ft_printf("r%c\n", (*a)->stack);
 		return (1);
+	}
 	reverse_rotate(a);
 	return (0);
 }
@@ -71,7 +80,10 @@ int	try_reverse_rotate(t_disc **a, int target)
 	before = movetofront_cost(*a, target);
 	reverse_rotate(a);
 	if (movetofront_cost(*a, target) < before)
+	{
+		ft_printf("rr%c\n", (*a)->stack);
 		return (1);
+	}
 	rotate(a);
 	return (0);
 }
