@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/07 18:48:09 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:12:17 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	is_sorted_pair(t_disc *disc, t_disc *node)
 	next_node = next(disc, node);
 	if (disc->stack == 'a' && next_node->rank == 0)
 		return (1);
-	if (disc->stack == 'b' && next_node->rank == get_highest_rank(disc))
+	if (disc->stack == 'b' && next_node->rank == get_highest(disc)->rank)
 		return (1);
 	if (disc->stack == 'a' && node->rank < next_node->rank)
 		return (1);
@@ -82,7 +82,7 @@ int		first_wrong_pair(t_disc *a)
 	if (!a || !(a->next))
 		return (-1);
 	current = a;
-	lowest_rank = get_lowest_rank(a);
+	lowest_rank = get_lowest(a)->rank;
 	while (current)
 	{
 		if ((a->stack == 'a' && next(a, current)->rank != lowest_rank && current->rank > next(a, current)->rank)

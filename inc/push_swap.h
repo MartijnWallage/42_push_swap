@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 15:35:22 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:12:17 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,7 @@
 # define CYN   "\x1B[36m"
 # define WHT   "\x1B[37m"
 # define RESET "\x1B[0m"
-# define SA		"sa\n"
-# define SB		"sb\n"
-# define SS		"ss\n"
-# define PA		"pa\n"
-# define PB		"pb\n"
-# define RA		"ra\n"
-# define RB		"rb\n"
-# define RR		"rr\n"
-# define RRA	"rra\n"
-# define RRB	"rrb\n"
-# define RRR	"rrr\n"
+# define ERROR "Error"
 
 typedef struct s_disc
 {
@@ -69,8 +59,8 @@ void	display_instructions(char *instructions);
 /*	utils.c	*/
 t_disc	*previous(t_disc *head, t_disc *node);
 t_disc	*next(t_disc *head, t_disc *node);
-t_disc	*get_lowest_rank(t_disc *a);
-t_disc	*get_highest_rank(t_disc *disc);
+t_disc	*get_lowest(t_disc *a);
+t_disc	*get_highest(t_disc *disc);
 int		get_index(t_disc *disc, int rank);
 int		min(int a, int b);
 int		max(int a, int b);

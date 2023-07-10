@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:25:41 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 15:47:44 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:36:53 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ t_disc	*get_args(int argc, char **argv)
 	while (++i < argc)
 	{
 		if (!is_integer(argv[i]))
-			ft_error("Error");
+			ft_error(ERROR);
 		nbr = ft_atoi(argv[i]);
 		new_node = ft_discnew(nbr);
 		if (new_node == NULL)
@@ -154,7 +154,7 @@ t_disc	*get_args(int argc, char **argv)
 		ft_discadd_back(&disc, new_node);
 	}
 	if (has_duplicates(disc))
-		ft_error("Error");
+		ft_error(ERROR);
 	set_rank(disc);
 	return (disc);
 }

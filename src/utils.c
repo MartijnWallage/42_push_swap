@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 15:12:24 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:12:17 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_disc	*next(t_disc *head, t_disc *node)
 		return (node->next);
 }
 
-t_disc	*get_lowest_rank(t_disc *disc)
+t_disc	*get_lowest(t_disc *disc)
 {
 	t_disc	*current;
 	t_disc	*lowest;
@@ -54,7 +54,7 @@ t_disc	*get_lowest_rank(t_disc *disc)
 	return (lowest);
 }
 
-t_disc	*get_highest_rank(t_disc *disc)
+t_disc	*get_highest(t_disc *disc)
 {
 	t_disc	*current;
 	t_disc	*highest;

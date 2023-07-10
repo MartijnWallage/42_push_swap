@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 15:16:34 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:16:19 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	find_place(t_disc *disc, int target)
 		current = current->next;
 	}
 	if (!return_node && disc->stack == 'a')
-		return_node = get_lowest_rank(disc);
+		return_node = get_lowest(disc);
 	if (!return_node && disc->stack == 'b')
-		return_node = get_highest_rank(disc);
+		return_node = get_highest(disc);
 	return (return_node->index);
 }
 
