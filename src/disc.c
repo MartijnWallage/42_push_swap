@@ -6,13 +6,13 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:12:36 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/07 18:57:50 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:17:40 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int		disc_size(t_disc *disc)
+int	disc_size(t_disc *disc)
 {
 	int		size;
 	t_disc	*current;
@@ -31,7 +31,7 @@ void	*free_disc(t_disc *disc)
 {
 	t_disc	*current;
 	t_disc	*next;
-	
+
 	if (!disc)
 		return (NULL);
 	current = disc;
@@ -75,7 +75,7 @@ t_disc	*ft_disclast(t_disc *disc)
 void	ft_discadd_front(t_disc **disc, t_disc *new)
 {
 	t_disc	*current;
-	
+
 	if (disc == NULL || new == NULL)
 		return ;
 	new->next = *disc;
@@ -99,7 +99,6 @@ t_disc	*ft_discnew(int nbr)
 	newnode->rank = nbr;
 	newnode->index = 0;
 	newnode->stack = 'a';
-	newnode->cost = -1;
 	newnode->next = NULL;
 	return (newnode);
 }

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/09 19:01:51 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:51:34 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 /*
  *	Some things to take care of:
- * 	When pushing from b to a do the same as what we now already do for a to b.
- *	Remove traces.
  * 	Remove // comments
  * 	Error handling
  * 	No duplicates are allowed

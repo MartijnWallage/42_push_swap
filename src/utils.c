@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/07 18:22:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:12:24 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,40 @@ t_disc	*next(t_disc *head, t_disc *node)
 		return (node->next);
 }
 
-int	get_lowest_rank(t_disc *disc)
+t_disc	*get_lowest_rank(t_disc *disc)
 {
 	t_disc	*current;
-	int		lowest_rank;
+	t_disc	*lowest;
 
 	if (!disc)
-		return (-1);
+		return (NULL);
 	current = disc;
-	lowest_rank = current->rank;
+	lowest = current;
 	while (current)
 	{
-		if (current->rank < lowest_rank)
-			lowest_rank = current->rank;
+		if (current->rank < lowest->rank)
+			lowest = current;
 		current = current->next;
 	}
-	return (lowest_rank);
+	return (lowest);
 }
 
-int	get_highest_rank(t_disc *disc)
+t_disc	*get_highest_rank(t_disc *disc)
 {
 	t_disc	*current;
-	int		highest_rank;
+	t_disc	*highest;
 
 	if (!disc)
-		return (-1);
+		return (NULL);
 	current = disc;
-	highest_rank = current->rank;
+	highest = current;
 	while (current)
 	{
-		if (current->rank > highest_rank)
-			highest_rank = current->rank;
+		if (current->rank > highest->rank)
+			highest = current;
 		current = current->next;
 	}
-	return (highest_rank);
+	return (highest);
 }
 int	get_index(t_disc *disc, int rank)
 {

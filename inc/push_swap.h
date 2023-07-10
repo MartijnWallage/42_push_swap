@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/09 17:47:23 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:35:22 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_table
 
 /* push_swap.c */
 char	*get_next_op(void);
+/*	args.c */
+void	*ft_error(char *message);
 /*	disc.c */
 int		disc_size(t_disc *disc);
 void	*free_disc(t_disc *disc);
@@ -67,8 +69,8 @@ void	display_instructions(char *instructions);
 /*	utils.c	*/
 t_disc	*previous(t_disc *head, t_disc *node);
 t_disc	*next(t_disc *head, t_disc *node);
-int		get_lowest_rank(t_disc *a);
-int		get_highest_rank(t_disc *disc);
+t_disc	*get_lowest_rank(t_disc *a);
+t_disc	*get_highest_rank(t_disc *disc);
 int		get_index(t_disc *disc, int rank);
 int		min(int a, int b);
 int		max(int a, int b);
@@ -96,8 +98,7 @@ int		wrong_pairs(t_disc *disc);
 void	sort_stack(t_disc **a, t_disc **b);
 void	double_move_to_front(t_disc **a, int target_a, t_disc **b, int target_b);
 /*	cost.c */
-void	calc_pushcosts(t_disc *a, t_disc *b);
-t_disc	*find_cheapest(t_disc *disc);
+t_disc	*find_cheapest(t_disc *a, t_disc *b);
 int		find_place(t_disc *disc, int target);
 
 #endif

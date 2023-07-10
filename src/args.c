@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:25:41 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/04 16:09:35 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:47:44 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@ typedef struct s_rank
 	int	value;
 	int index;
 }		t_rank;
+
+void	*ft_error(char *message)
+{
+	int	len;
+
+	len = ft_strlen(message);
+	write(2, message, len);
+	write(2, "\n", 1);
+	exit(1);
+}
 
 void	set_rank(t_disc *disc)
 {
@@ -86,6 +96,44 @@ char	*get_next_op(void)
 	return (parsed_input);
 }
 
+int	has_duplicates(t_disc *disc)
+{
+	t_disc	*current;
+	t_disc	*current2;
+
+	current = disc;
+	current2 = disc;
+	while (current)
+	{
+		while (current2)
+		{
+			if (current != current2 && current->rank == current2->rank)
+				return (1);
+			current2 = current2->next;
+		}
+		current = current->next;
+	}
+	return (0);
+}
+
+int	is_integer(char *arg)
+{
+	int	found_digit;
+
+	found_digit = 0;
+	while (*arg)
+	{
+		if (*arg != ' ' && (*arg < '0' || *arg > '9'))
+			return (0);
+		if (*arg >= '0' && *arg <= '9')
+			found_digit = 1;
+		arg++;
+	}
+	if (!found_digit)
+		return (0);
+	return (1);
+}
+
 t_disc	*get_args(int argc, char **argv)
 {
 	int		i;
@@ -97,12 +145,16 @@ t_disc	*get_args(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
+		if (!is_integer(argv[i]))
+			ft_error("Error");
 		nbr = ft_atoi(argv[i]);
 		new_node = ft_discnew(nbr);
 		if (new_node == NULL)
 			return (free_disc(disc));
 		ft_discadd_back(&disc, new_node);
 	}
+	if (has_duplicates(disc))
+		ft_error("Error");
 	set_rank(disc);
 	return (disc);
 }

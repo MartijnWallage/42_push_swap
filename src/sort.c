@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/09 19:48:51 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:21:13 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,8 @@ void	sort_stack(t_disc **a, t_disc **b)
 	}
 	if (*b && wrong_pairs(*a) == 0 && wrong_pairs(*b) == 0)
 	{
-		calc_pushcosts(*b, *a);
-		cheapest = find_cheapest(*b);
+		cheapest = find_cheapest(*b, *a);
 		insert = find_place(*a, cheapest->rank);
-//		display_discs(*a, *b);
 		double_move_to_front(a, insert, b, cheapest->index);
 		exec_op(a, b, "pa");
 		sort_stack(a, b);
@@ -96,11 +94,8 @@ void	sort_stack(t_disc **a, t_disc **b)
 	}
 	if (wrong_pairs(*a))
 	{
-		calc_pushcosts(*a, *b);
-//		display_discs(*a, *b);
-		cheapest = find_cheapest(*a);
+		cheapest = find_cheapest(*a, *b);
 		insert = find_place(*b, cheapest->rank);
-//		ft_printf("a %d is to be inserted at b %d\n", cheapest->index, insert);
 		double_move_to_front(a, cheapest->index, b, insert);
 		exec_op(a, b, "pb");
 		sort_stack(a, b);
