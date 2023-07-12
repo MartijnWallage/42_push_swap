@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:55:36 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/12 17:53:27 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:59:41 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 static void	exec_op_noprint(t_disc **a, t_disc **b, char *op)
 {
-	if (!ft_strncmp(op, "sa", 2) || !ft_strncmp(op, "ss", 2))
+	if (!ft_strcmp(op, "sa\n") || !ft_strcmp(op, "ss\n"))
 		swap(a);
-	if (!ft_strncmp(op, "sb", 2) || !ft_strncmp(op, "ss", 2))
+	if (!ft_strcmp(op, "sb\n") || !ft_strcmp(op, "ss\n"))
 		swap(b);
-	if (!ft_strncmp(op, "pa", 2))
+	if (!ft_strcmp(op, "pa\n"))
 		push(b, a);
-	if (!ft_strncmp(op, "pb", 2))
+	if (!ft_strcmp(op, "pb\n"))
 		push(a, b);
-	if (!ft_strncmp(op, "ra", 2) || !ft_strncmp(op, "rr", 3))
+	if (!ft_strcmp(op, "ra\n") || !ft_strcmp(op, "rr\n"))
 		rotate(a);
-	if (!ft_strncmp(op, "rb", 2) || !ft_strncmp(op, "rr", 3))
+	if (!ft_strcmp(op, "rb\n") || !ft_strcmp(op, "rr\n"))
 		rotate(b);
-	if (!ft_strncmp(op, "rra", 3) || !ft_strncmp(op, "rrr", 3))
+	if (!ft_strcmp(op, "rra\n") || !ft_strcmp(op, "rrr\n"))
 		reverse_rotate(a);
-	if (!ft_strncmp(op, "rrb", 3) || !ft_strncmp(op, "rrr", 3))
+	if (!ft_strcmp(op, "rrb\n") || !ft_strcmp(op, "rrr\n"))
 		reverse_rotate(b);
 }
 
