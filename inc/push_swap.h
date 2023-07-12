@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 18:12:17 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:21:55 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ typedef struct s_table
 	int		try;
 }			t_table; 
 
-/* push_swap.c */
-char	*get_next_op(void);
 /*	args.c */
 void	*ft_error(char *message);
 /*	disc.c */

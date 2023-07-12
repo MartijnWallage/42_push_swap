@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:25:41 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 16:36:53 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:43:10 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	*ft_error(char *message)
 	int	len;
 
 	len = ft_strlen(message);
+	ft_printf(RED);
 	write(2, message, len);
+	ft_printf(RESET);
 	write(2, "\n", 1);
 	exit(1);
 }
@@ -116,22 +118,41 @@ int	has_duplicates(t_disc *disc)
 	return (0);
 }
 
+static char	*ignore_whitespace(char *arg)
+{
+	while (*arg == ' ' || *arg == '\t' || *arg == '\n' || *arg == '\v'
+		|| *arg == '\f' || *arg == '\r')
+		arg++;
+	return (arg);
+}
+
 int	is_integer(char *arg)
 {
-	int	found_digit;
+	int		neg;
+	int		found_digit;
+	long	nbr;
 
-	found_digit = 0;
-	while (*arg)
+	arg = ignore_whitespace(arg);
+	neg = 1;
+	if (*arg == '-')
 	{
-		if (*arg != ' ' && (*arg < '0' || *arg > '9'))
-			return (0);
-		if (*arg >= '0' && *arg <= '9')
-			found_digit = 1;
+		neg = -1;
 		arg++;
 	}
-	if (!found_digit)
-		return (0);
-	return (1);
+	else if (*arg == '+')
+		arg++;
+	nbr = 0;
+	found_digit = 0;
+	while (*arg >= '0' && *arg <= '9')
+	{
+		found_digit = 1;
+		nbr = nbr * 10 + *arg - '0';
+		if (neg * nbr > INT_MAX || neg * nbr < INT_MIN)
+			return (0);
+		arg++;
+	}
+	arg = ignore_whitespace(arg);
+	return (!*arg && found_digit);
 }
 
 t_disc	*get_args(int argc, char **argv)

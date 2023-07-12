@@ -6,7 +6,7 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 17:51:07 by mwallage          #+#    #+#              #
-#    Updated: 2023/07/08 15:08:02 by mwallage         ###   ########.fr        #
+#    Updated: 2023/07/12 17:40:10 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ CC		:= cc
 CFLAGS	:= -Wall -Werror -Wextra
 SRCDIR	:= src
 OBJDIR	:= obj
-SRC 	:= $(SRCDIR)/lower_ops.c $(SRCDIR)/print.c $(SRCDIR)/push_swap.c \
+SRC 	:= $(SRCDIR)/lower_ops.c $(SRCDIR)/print.c $(SRCDIR)/main.c \
 			$(SRCDIR)/sort.c $(SRCDIR)/check_sort.c $(SRCDIR)/utils.c \
 			$(SRCDIR)/disc.c $(SRCDIR)/args.c $(SRCDIR)/higher_ops.c \
 			$(SRCDIR)/try_ops.c $(SRCDIR)/cost.c
 SRC2	:= $(SRCDIR)/checker.c $(SRCDIR)/lower_ops.c $(SRCDIR)/print.c \
 			$(SRCDIR)/sort.c $(SRCDIR)/check_sort.c $(SRCDIR)/utils.c \
-			$(SRCDIR)/disc.c $(SRCDIR)args.c $(SRCDIR)/higher_ops.c \
+			$(SRCDIR)/disc.c $(SRCDIR)/args.c $(SRCDIR)/higher_ops.c \
 			$(SRCDIR)/try_ops.c $(SRCDIR)/cost.c
 OBJ		:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 OBJ2	:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC2))

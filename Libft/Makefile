@@ -6,7 +6,7 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 17:51:07 by mwallage          #+#    #+#              #
-#    Updated: 2023/06/14 18:01:09 by mwallage         ###   ########.fr        #
+#    Updated: 2023/07/12 17:39:14 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ $(OBJDIR):
 	
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 clean:
 	rm -rf $(OBJDIR) 
 	make clean -C $(PRINTFDIR)

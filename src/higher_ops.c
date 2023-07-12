@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/09 17:55:29 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:31:00 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	move_to_front(t_disc **disc, int index)
 
 void	exec_op(t_disc **a, t_disc **b, const char *op)
 {
-	ft_printf("%s\n", op);
 	if (!ft_strncmp(op, "sa", 2) || !ft_strncmp(op, "ss", 2))
 		swap(a);
 	if (!ft_strncmp(op, "sb", 2) || !ft_strncmp(op, "ss", 2))
@@ -58,4 +57,5 @@ void	exec_op(t_disc **a, t_disc **b, const char *op)
 		reverse_rotate(a);
 	if (!ft_strncmp(op, "rrb", 3) || !ft_strncmp(op, "rrr", 3))
 		reverse_rotate(b);
+	ft_printf("%s\n", op);
 }

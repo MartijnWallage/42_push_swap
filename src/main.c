@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/09 19:51:34 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:27:07 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /*
  *	Some things to take care of:
  * 	Remove // comments
- * 	Error handling
- * 	No duplicates are allowed
+ * 	Check memleaks
+ * 	Norminette
  *  Remove this.
  */
 
@@ -32,10 +32,9 @@ int main(int argc, char **argv)
 		return (1);
 	b = malloc(sizeof(t_disc *));
 	if (!b)
-		return (1);
+		ft_error(ERROR);
 	*b = NULL;
 	sort_stack(&a, b);
-//	display_discs(a, *b);
 	free_disc(a);
 	free(b);
 	return (0);
