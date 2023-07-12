@@ -46,19 +46,17 @@ int main(int argc, char **argv)
 {
 	t_disc	*a;
 	t_disc	**b;
-	t_disc	*current;
 	char	*op;
 	
 	if (argc < 2)
 		return (1);
 	a = get_args(argc, argv);
 	if (a == NULL)
-		return (1);
+		ft_error(ERROR);
 	b = malloc(sizeof(t_disc *));
 	if (!b)
 		ft_error(ERROR);
 	*b = NULL;
-	current = a;
 	while (1)
 	{
 		op = get_next_line(STDIN_FILENO);

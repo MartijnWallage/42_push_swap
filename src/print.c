@@ -34,11 +34,3 @@ void	display_discs(t_disc *a, t_disc *b)
 	}
 	ft_printf("\n");
 }
-
-void	display_instructions(char *instructions)
-{
-	if (!instructions)
-		printf("");
-	else
-		printf("%s", instructions);
-}

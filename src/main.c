@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 		return (1);
 	a = get_args(argc, argv);
 	if (a == NULL)
-		return (1);
+		ft_error(ERROR);
 	b = malloc(sizeof(t_disc *));
 	if (!b)
 		ft_error(ERROR);
