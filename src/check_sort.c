@@ -95,8 +95,8 @@ t_disc	*find_cheapest(t_disc *a, t_disc *b)
 		return (NULL);
 	current = a;
 	cheapest = current;
-	size_a = disc_size(a);
-	size_b = disc_size(b);
+	size_a = disclen(a);
+	size_b = disclen(b);
 	while (current)
 	{
 		target = find_place(b, current->rank);

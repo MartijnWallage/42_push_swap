@@ -35,7 +35,7 @@ void	rank(t_disc *disc)
 	int		size;
 	int		i;
 	
-	size = disc_size(disc);
+	size = disclen(disc);
 	tab = malloc(sizeof(t_disc *) * size);
 	if (!tab)
 	{

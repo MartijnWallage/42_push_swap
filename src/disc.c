@@ -12,21 +12,6 @@
 
 #include "../inc/push_swap.h"
 
-int	disc_size(t_disc *disc)
-{
-	int		size;
-	t_disc	*current;
-
-	current = disc;
-	size = 0;
-	while (current)
-	{
-		size++;
-		current = current->next;
-	}
-	return (size);
-}
-
 void	*free_disc(t_disc *disc)
 {
 	t_disc	*current;
@@ -44,7 +29,7 @@ void	*free_disc(t_disc *disc)
 	return (NULL);
 }
 
-void	ft_discadd_back(t_disc **disc, t_disc *new)
+void	discadd_back(t_disc **disc, t_disc *new)
 {
 	t_disc	*current;
 
@@ -63,7 +48,7 @@ void	ft_discadd_back(t_disc **disc, t_disc *new)
 	}
 }
 
-t_disc	*ft_disclast(t_disc *disc)
+t_disc	*disclast(t_disc *disc)
 {
 	if (disc == NULL)
 		return (NULL);
@@ -72,7 +57,7 @@ t_disc	*ft_disclast(t_disc *disc)
 	return (disc);
 }
 
-void	ft_discadd_front(t_disc **disc, t_disc *new)
+void	discadd_front(t_disc **disc, t_disc *new)
 {
 	t_disc	*current;
 
@@ -89,7 +74,7 @@ void	ft_discadd_front(t_disc **disc, t_disc *new)
 	}
 }
 
-t_disc	*ft_discnew(int nbr)
+t_disc	*discnew(int nbr)
 {
 	t_disc	*newnode;
 

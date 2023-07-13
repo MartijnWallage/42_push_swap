@@ -45,18 +45,17 @@ typedef struct s_table
 void	*ft_error(char *message);
 t_disc	*get_args(int argc, char **argv);
 /*	disc.c */
-int		disc_size(t_disc *disc);
 void	*free_disc(t_disc *disc);
-t_disc	*ft_disclast(t_disc *disc);
-void	ft_discadd_front(t_disc **disc, t_disc *new);
-t_disc	*ft_discnew(int nbr);
-void	ft_discadd_back(t_disc **disc, t_disc *new);
+t_disc	*disclast(t_disc *disc);
+void	discadd_front(t_disc **disc, t_disc *new);
+t_disc	*discnew(int nbr);
+void	discadd_back(t_disc **disc, t_disc *new);
 /*	utils.c	*/
 t_disc	*previous(t_disc *head, t_disc *node);
 t_disc	*next(t_disc *head, t_disc *node);
 t_disc	*get_lowest(t_disc *a);
 t_disc	*get_highest(t_disc *disc);
-t_disc	*get_by_index(t_disc *disc, int index);
+int		disclen(t_disc *disc);
 /*	lower_ops.c */
 void	swap(t_disc **head_ref);
 void	push(t_disc **a, t_disc **b);

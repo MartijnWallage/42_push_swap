@@ -18,8 +18,8 @@ static void	rr_to_front(t_disc **a, int target_a, t_disc **b, int target_b)
 	int	a_revrot;
 	int	b_revrot;
 
-	a_revrot = disc_size(*a) - target_a;
-	b_revrot = disc_size(*b) - target_b;
+	a_revrot = disclen(*a) - target_a;
+	b_revrot = disclen(*b) - target_b;
 	i = -1;
 	while (++i < ft_min(a_revrot, b_revrot))
 		exec_op(a, b, "rrr");
@@ -63,8 +63,8 @@ void	double_move_to_front(t_disc **a, int target_a, t_disc **b, int target_b)
 	int		a_revrot;
 	int		b_revrot;
 
-	a_revrot = disc_size(*a) - target_a;
-	b_revrot = disc_size(*b) - target_b;
+	a_revrot = disclen(*a) - target_a;
+	b_revrot = disclen(*b) - target_b;
 	if (ft_min(ft_max(a_revrot, b_revrot), ft_max(target_a, target_b))
 		> ft_min(target_a, a_revrot) + ft_min(target_b, b_revrot))
 	{
@@ -84,7 +84,7 @@ void	move_to_front(t_disc **disc, int index)
 
 	if (!disc || !*disc || index == 0)
 		return ;
-	len = disc_size(*disc);
+	len = disclen(*disc);
 	i = -1;
 	if (index <= len - index)
 	{

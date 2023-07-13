@@ -17,8 +17,8 @@ void	*ft_error(char *message)
 	int	len;
 
 	len = ft_strlen(message);
-	write(2, message, len);
-	write(2, "\n", 1);
+	write(STDERR_FILENO, message, len);
+	write(STDERR_FILENO, "\n", 1);
 	exit(1);
 }
 
@@ -93,13 +93,13 @@ t_disc	*get_args(int argc, char **argv)
 		if (!is_integer(argv[i]))
 			ft_error(ERROR);
 		nbr = ft_atoi(argv[i]);
-		new_node = ft_discnew(nbr);
+		new_node = discnew(nbr);
 		if (new_node == NULL)
 		{
 			free_disc(disc);
 			ft_error(ERROR);
 		}
-		ft_discadd_back(&disc, new_node);
+		discadd_back(&disc, new_node);
 	}
 	if (has_duplicates(disc))
 		ft_error(ERROR);

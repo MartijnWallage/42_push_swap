@@ -41,7 +41,7 @@ void	push(t_disc **a, t_disc **b)
 		(*a)->stack = 'a';
 	if ((*a)->next == NULL)
 	{
-		ft_discadd_front(b, *a);
+		discadd_front(b, *a);
 		*a = NULL;
 		return ;
 	}
@@ -52,7 +52,7 @@ void	push(t_disc **a, t_disc **b)
 		current->index--;
 		current = current->next;
 	}
-	ft_discadd_front(b, *a);
+	discadd_front(b, *a);
 	*a = head;
 }
 
@@ -65,7 +65,7 @@ void	rotate(t_disc **a)
 	if (!a || !*a || !(*a)->next)
 		return ;
 	head = (*a)->next;
-	ft_disclast(*a)->next = *a;
+	disclast(*a)->next = *a;
 	(*a)->next = NULL;
 	*a = head;
 	current = head;
@@ -87,7 +87,7 @@ void	reverse_rotate(t_disc	**a)
 
 	if (!a | !*a || !(*a)->next)
 		return ;
-	head = ft_disclast(*a);
+	head = disclast(*a);
 	penultimate = *a;
 	while (penultimate->next != head)
 		penultimate = penultimate->next;

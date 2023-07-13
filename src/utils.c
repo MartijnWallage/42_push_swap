@@ -17,7 +17,7 @@ t_disc	*previous(t_disc *head, t_disc *node)
 	t_disc	*current;
 
 	if (head == node)
-		return (ft_disclast(head));
+		return (disclast(head));
 	current = head;
 	while (current)
 	{
@@ -70,4 +70,19 @@ t_disc	*get_highest(t_disc *disc)
 		current = current->next;
 	}
 	return (highest);
+}
+
+int	disclen(t_disc *disc)
+{
+	int		size;
+	t_disc	*current;
+
+	current = disc;
+	size = 0;
+	while (current)
+	{
+		size++;
+		current = current->next;
+	}
+	return (size);
 }

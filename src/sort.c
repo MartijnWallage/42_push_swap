@@ -44,17 +44,17 @@ void	sort_stack(t_disc **a, t_disc **b)
 		return ;
 	if (!*b && wrong_pairs(*a) == 0)
 		move_to_front(a, get_index(*a, 0));
-	else if (disc_size(*a) == 3 && wrong_pairs(*a))
+	else if (disclen(*a) == 3 && wrong_pairs(*a))
 	{
 		exec_op(a, b, "sa");
 		sort_stack(a, b);
 	}
-	else if (*b && wrong_pairs(*a) == 0 && wrong_pairs(*b) == 0)
+	else if (*b && !wrong_pairs(*a) && !wrong_pairs(*b))
 	{
 		smart_push(b, a);
 		sort_stack(a, b);
 	}
-	else if (wrong_pairs(*a))
+	else
 	{
 		smart_push(a, b);
 		sort_stack(a, b);
