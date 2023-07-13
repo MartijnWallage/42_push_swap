@@ -6,7 +6,7 @@
 #    By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 17:51:07 by mwallage          #+#    #+#              #
-#    Updated: 2023/07/12 17:39:14 by mwallage         ###   ########.fr        #
+#    Updated: 2023/07/13 15:29:50 by mwallage         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC 	:= $(SRCDIR)/ft_isalpha.c $(SRCDIR)/ft_isdigit.c $(SRCDIR)/ft_isalnum.c \
 		$(SRCDIR)/ft_putnbr_fd.c $(SRCDIR)/ft_lstnew.c $(SRCDIR)/ft_lstadd_front.c \
 		$(SRCDIR)/ft_lstsize.c $(SRCDIR)/ft_lstlast.c $(SRCDIR)/ft_lstadd_back.c \
 		$(SRCDIR)/ft_lstdelone.c $(SRCDIR)/ft_lstclear.c $(SRCDIR)/ft_lstiter.c \
-		$(SRCDIR)/ft_lstmap.c $(SRCDIR)/get_next_line.c $(SRCDIR)/get_next_line_utils.c
+		$(SRCDIR)/ft_lstmap.c $(SRCDIR)/get_next_line.c $(SRCDIR)/get_next_line_utils.c \
+		$(SRCDIR)/ft_minmax.c
 OBJ		:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 NAME	:= libft.a
 PRINTFDIR	:=	Printf

@@ -6,75 +6,24 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/12 16:42:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:21:54 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	rr_to_front(t_disc **a, int target_a, t_disc **b, int target_b)
+int	get_index(t_disc *disc, int rank)
 {
-	int	i;
-	int	a_revrot;
-	int	b_revrot;
+	t_disc	*current;
 
-	a_revrot = disc_size(*a) - target_a;
-	b_revrot = disc_size(*b) - target_b;
-	i = -1;
-	while (++i < min(a_revrot, b_revrot))
-		exec_op(a, b, "rrr");
-	while (i < a_revrot)
+	current = disc;
+	while (current)
 	{
-		reverse_rotate(a);
-		ft_printf("rr%c\n", (*a)->stack);
-		i++;
+		if (current->rank == rank)
+			return (current->index);
+		current = current->next;
 	}
-	while (i < b_revrot)
-	{
-		reverse_rotate(b);
-		ft_printf("rr%c\n", (*b)->stack);
-		i++;
-	}
-}
-
-static void	r_to_front(t_disc **a, int target_a, t_disc **b, int target_b)
-{
-	int	i;
-
-	i = -1;
-	while (++i < min(target_a, target_b))
-		exec_op(a, b, "rr");
-	while (i < target_a)
-	{
-		rotate(a);
-		ft_printf("r%c\n", (*a)->stack);
-		i++;
-	}
-	while (i < target_b)
-	{
-		rotate(b);
-		ft_printf("r%c\n", (*b)->stack);
-		i++;
-	}
-}
-
-void	double_move_to_front(t_disc **a, int target_a, t_disc **b, int target_b)
-{
-	int		a_revrot;
-	int		b_revrot;
-
-	a_revrot = disc_size(*a) - target_a;
-	b_revrot = disc_size(*b) - target_b;
-	if (min(max(a_revrot, b_revrot), max(target_a, target_b))
-		> min(target_a, a_revrot) + min(target_b, b_revrot))
-	{
-		move_to_front(a, target_a);
-		move_to_front(b, target_b);
-	}
-	else if (max(a_revrot, b_revrot) < max(target_a, target_b))
-		rr_to_front(a, target_a, b, target_b);
-	else
-		r_to_front(a, target_a, b, target_b);
+	return (-1);
 }
 
 static void	smart_push(t_disc **a, t_disc **b)

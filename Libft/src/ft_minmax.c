@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_minmax.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 17:48:17 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/09 17:34:15 by mwallage         ###   ########.fr       */
+/*   Created: 2023/05/02 14:07:52 by mwallage          #+#    #+#             */
+/*   Updated: 2023/07/13 15:28:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/libft.h"
 
-void	display_discs(t_disc *a, t_disc *b)
+int	ft_min(int a, int b)
 {
-	ft_printf("\na\t\tb\n");
-	ft_printf("|\t\t|\n");
-	while (a || b)
-	{
-		if (a)
-		{
-			ft_printf("a[%d]=%d\t\t", a->cost, a->rank);
-			a = a->next;
-		}
-		else
-			ft_printf("\t\t");
-		if (b)
-		{
-			ft_printf("b[%d]=%d\t", b->cost, b->rank);
-			b = b->next;
-		}
-		ft_printf("\n");
-	}
-	ft_printf("\n");
+	if (a <= b)
+		return (a);
+	else
+		return (b);
+}
+
+int	ft_max(int a, int b)
+{
+	if (a >= b)
+		return (a);
+	else
+		return (b);
 }

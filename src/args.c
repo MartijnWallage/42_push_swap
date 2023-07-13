@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:25:41 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/12 17:43:10 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:47:26 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 typedef struct s_rank
 {
 	int	value;
-	int index;
+	int	index;
 }		t_rank;
 
 void	*ft_error(char *message)
@@ -23,9 +23,7 @@ void	*ft_error(char *message)
 	int	len;
 
 	len = ft_strlen(message);
-	ft_printf(RED);
 	write(2, message, len);
-	ft_printf(RESET);
 	write(2, "\n", 1);
 	exit(1);
 }
@@ -37,16 +35,16 @@ void	set_rank(t_disc *disc)
 	int		*ranked;
 	int		size;
 	int		i;
-	
+
 	size = disc_size(disc);
 	ranks = malloc(sizeof(t_rank) * size);
 	if (ranks == NULL)
-		return ;
+		ft_error(ERROR);
 	ranked = malloc(sizeof(int) * size);
 	if (ranked == NULL)
 	{
 		free(ranks);
-		return ;
+		ft_error(ERROR);
 	}
 	i = -1;
 	while (++i < size)
@@ -86,30 +84,18 @@ void	set_rank(t_disc *disc)
 	free(ranks);
 }
 
-char	*get_next_op(void)
-{
-	char	*unparsed_input;
-	char	*parsed_input;
-	
-	unparsed_input = get_next_line(stdin->_fileno);
-	if (unparsed_input == NULL)
-		return (NULL);
-	parsed_input = ft_strtrim(unparsed_input, " \n");
-	return (parsed_input);
-}
-
 int	has_duplicates(t_disc *disc)
 {
 	t_disc	*current;
 	t_disc	*current2;
 
 	current = disc;
-	current2 = disc;
 	while (current)
 	{
+		current2 = current->next;
 		while (current2)
 		{
-			if (current != current2 && current->rank == current2->rank)
+			if (current->rank == current2->rank)
 				return (1);
 			current2 = current2->next;
 		}
@@ -171,7 +157,10 @@ t_disc	*get_args(int argc, char **argv)
 		nbr = ft_atoi(argv[i]);
 		new_node = ft_discnew(nbr);
 		if (new_node == NULL)
-			return (free_disc(disc));
+		{
+			free_disc(disc);
+			ft_error(ERROR);
+		}
 		ft_discadd_back(&disc, new_node);
 	}
 	if (has_duplicates(disc))

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:47:48 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 18:12:17 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:46:01 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,43 +70,4 @@ t_disc	*get_highest(t_disc *disc)
 		current = current->next;
 	}
 	return (highest);
-}
-int	get_index(t_disc *disc, int rank)
-{
-	t_disc	*current;
-
-	current = disc;
-	while (current)
-	{
-		if (current->rank == rank)
-			return (current->index);
-		current = current->next;
-	}
-	return (-1);
-}
-
-t_disc	*get_by_index(t_disc *disc, int index)
-{
-	int	i;
-
-	i = -1;
-	while (++i < index)
-		disc = disc->next;
-	return (disc);
-}
-
-int	min(int a, int b)
-{
-	if (a <= b)
-		return (a);
-	else
-		return (b);
-}
-
-int	max(int a, int b)
-{
-	if (a >= b)
-		return (a);
-	else
-		return (b);
 }

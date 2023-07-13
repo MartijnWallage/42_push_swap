@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/09 16:48:15 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:44:29 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_disc **a)
 {
 	t_disc	*first;
 	t_disc	*second;
-	
+
 	if (*a == NULL || (*a)->next == NULL)
 		return ;
 	first = *a;
@@ -84,7 +84,7 @@ void	reverse_rotate(t_disc	**a)
 	t_disc	*penultimate;
 	t_disc	*current;
 	int		i;
-	
+
 	if (!a | !*a || !(*a)->next)
 		return ;
 	head = ft_disclast(*a);
