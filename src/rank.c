@@ -52,4 +52,5 @@ void	rank(t_disc *disc)
 	i = -1;
 	while (++i < size)
 		tab[i]->rank = i;
+	free(tab);
 }
