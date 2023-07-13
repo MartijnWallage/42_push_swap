@@ -15,10 +15,11 @@ CFLAGS	:= -Wall -Werror -Wextra
 SRCDIR	:= src
 OBJDIR	:= obj
 SRC 	:= $(SRCDIR)/lower_ops.c $(SRCDIR)/main.c $(SRCDIR)/sort.c \
-			$(SRCDIR)/check_sort.c $(SRCDIR)/utils.c \
+			$(SRCDIR)/check_sort.c $(SRCDIR)/utils.c $(SRCDIR)/rank.c \
 			$(SRCDIR)/disc.c $(SRCDIR)/args.c $(SRCDIR)/higher_ops.c
 SRC2	:= $(SRCDIR)/checker.c $(SRCDIR)/lower_ops.c $(SRCDIR)/utils.c \
-			$(SRCDIR)/disc.c $(SRCDIR)/args.c $(SRCDIR)/check_sort.c
+			$(SRCDIR)/disc.c $(SRCDIR)/args.c $(SRCDIR)/check_sort.c \
+			$(SRCDIR)/rank.c
 OBJ		:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 OBJ2	:= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC2))
 NAME	:= push_swap

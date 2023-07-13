@@ -74,6 +74,8 @@ t_disc	*find_cheapest(t_disc *a, t_disc *b);
 int		find_place(t_disc *disc, int target);
 /*	sort.c */
 void	sort_stack(t_disc **a, t_disc **b);
+/*	rank.c */
+void	rank(t_disc *disc);
 
 
 #endif
