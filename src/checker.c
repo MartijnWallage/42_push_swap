@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:55:36 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 16:02:27 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:11:38 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,12 @@ static void	get_ops(t_disc **a, t_disc **b)
 		if (!op)
 			break ;
 		if (!is_valid_op(op))
-			ft_error(ERROR);
+		{
+			free(op);
+			free_disc(*b);
+			free(b);
+			ft_error(ERROR, *a);
+		}
 		exec_op_noprint(a, b, op);
 		free(op);
 	}
@@ -67,18 +72,17 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	a = get_args(argc, argv);
-	if (a == NULL)
-		return (1);
 	b = malloc(sizeof(t_disc *));
 	if (!b)
-		ft_error(ERROR);
+		ft_error(ERROR, a);
 	*b = NULL;
 	get_ops(&a, b);
-	if (!*b && is_sorted(a))
+	if (!*b && is_ascending(a))
 		ft_printf(GRN "OK\n" RESET);
 	else
 		ft_printf(RED "KO\n" RESET);
 	free_disc(a);
+	free_disc(*b);
 	free(b);
 	return (0);
 }

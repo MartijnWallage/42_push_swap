@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:56:26 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 15:46:16 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:45:07 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	a = get_args(argc, argv);
-	if (a == NULL)
-		return (1);
 	b = malloc(sizeof(t_disc *));
 	if (!b)
-		ft_error(ERROR);
+		ft_error(ERROR, a);
 	*b = NULL;
 	sort_stack(&a, b);
 	free_disc(a);

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:25:41 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 15:47:26 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:47:00 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,11 @@ void	rank(t_disc *disc)
 	t_disc	**tab;
 	int		size;
 	int		i;
-	
+
 	size = disclen(disc);
 	tab = malloc(sizeof(t_disc *) * size);
 	if (!tab)
-	{
-		free_disc(disc);
-		ft_error(ERROR);
-	}
+		ft_error(ERROR, disc);
 	i = -1;
 	while (++i < size)
 	{

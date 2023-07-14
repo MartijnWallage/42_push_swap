@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:12:36 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/10 15:17:40 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:34:10 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*free_disc(t_disc *disc)
 	t_disc	*current;
 	t_disc	*next;
 
-	if (!disc)
-		return (NULL);
 	current = disc;
 	while (current)
 	{

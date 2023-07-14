@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 15:45:48 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:11:52 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,6 @@ int	wrong_pairs(t_disc *disc)
 	if (nfails > 0)
 		nfails--;
 	return (nfails);
-}
-
-int	is_sorted(t_disc *disc)
-{
-	if (disc->stack == 'a')
-		return (is_ascending(disc));
-	else
-		return (wrong_pairs(disc) == 0);
 }
 
 int	find_place(t_disc *disc, int target)

@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:49:39 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 15:44:29 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:17:50 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	push(t_disc **a, t_disc **b)
 	t_disc	*head;
 	t_disc	*current;	
 
-	if (!a || !b || !*a)
-		return ;
 	if ((*a)->stack == 'a')
 		(*a)->stack = 'b';
 	else

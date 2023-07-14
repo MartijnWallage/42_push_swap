@@ -6,23 +6,24 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:25:41 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 15:47:26 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:13:35 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	*ft_error(char *message)
+void	ft_error(char *message, t_disc *disc)
 {
 	int	len;
 
+	free_disc(disc);
 	len = ft_strlen(message);
 	write(STDERR_FILENO, message, len);
 	write(STDERR_FILENO, "\n", 1);
 	exit(1);
 }
 
-int	has_duplicates(t_disc *disc)
+static void	check_duplicates(t_disc *disc)
 {
 	t_disc	*current;
 	t_disc	*current2;
@@ -34,12 +35,11 @@ int	has_duplicates(t_disc *disc)
 		while (current2)
 		{
 			if (current->rank == current2->rank)
-				return (1);
+				ft_error(ERROR, disc);
 			current2 = current2->next;
 		}
 		current = current->next;
 	}
-	return (0);
 }
 
 static char	*ignore_whitespace(char *arg)
@@ -50,7 +50,7 @@ static char	*ignore_whitespace(char *arg)
 	return (arg);
 }
 
-int	is_integer(char *arg)
+static int	is_integer(char *arg)
 {
 	int		neg;
 	int		found_digit;
@@ -91,18 +91,14 @@ t_disc	*get_args(int argc, char **argv)
 	while (++i < argc)
 	{
 		if (!is_integer(argv[i]))
-			ft_error(ERROR);
+			ft_error(ERROR, disc);
 		nbr = ft_atoi(argv[i]);
 		new_node = discnew(nbr);
 		if (new_node == NULL)
-		{
-			free_disc(disc);
-			ft_error(ERROR);
-		}
+			ft_error(ERROR, disc);
 		discadd_back(&disc, new_node);
 	}
-	if (has_duplicates(disc))
-		ft_error(ERROR);
+	check_duplicates(disc);
 	rank(disc);
 	return (disc);
 }

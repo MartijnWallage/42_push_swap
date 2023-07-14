@@ -6,7 +6,7 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 13:39:52 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 15:38:23 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:33:36 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_table
 }			t_table; 
 
 /*	args.c */
-void	*ft_error(char *message);
+void	ft_error(char *message, t_disc *disc);
 t_disc	*get_args(int argc, char **argv);
 /*	disc.c */
 void	*free_disc(t_disc *disc);
@@ -64,10 +64,10 @@ void	reverse_rotate(t_disc **a);
 /*	higher_ops	*/
 void	move_to_front(t_disc **a, int index);
 void	exec_op(t_disc **a, t_disc **b, const char *op);
-void	double_move_to_front(t_disc **a, int target_a, t_disc **b, int target_b);
+void	double_move_to_front(t_disc **a, int target_a,
+			t_disc **b, int target_b);
 /*	check_ sort.c	*/
 int		is_ascending(t_disc *disc);
-int		is_sorted(t_disc *disc);
 int		wrong_pairs(t_disc *disc);
 t_disc	*find_cheapest(t_disc *a, t_disc *b);
 int		find_place(t_disc *disc, int target);
@@ -75,6 +75,5 @@ int		find_place(t_disc *disc, int target);
 void	sort_stack(t_disc **a, t_disc **b);
 /*	rank.c */
 void	rank(t_disc *disc);
-
 
 #endif

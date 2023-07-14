@@ -6,13 +6,13 @@
 /*   By: mwallage <mwallage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:52:40 by mwallage          #+#    #+#             */
-/*   Updated: 2023/07/13 15:21:54 by mwallage         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:12:50 by mwallage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	get_index(t_disc *disc, int rank)
+static int	get_index(t_disc *disc, int rank)
 {
 	t_disc	*current;
 
@@ -40,7 +40,7 @@ static void	smart_push(t_disc **a, t_disc **b)
 
 void	sort_stack(t_disc **a, t_disc **b)
 {
-	if (!*b && is_sorted(*a))
+	if (!*b && is_ascending(*a))
 		return ;
 	if (!*b && wrong_pairs(*a) == 0)
 		move_to_front(a, get_index(*a, 0));
