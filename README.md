@@ -18,7 +18,7 @@ Both discs have a "current element": you can imagine a reading head, or the ball
                            current element
                                   |
                                   v
-  previous element is 123 <- 10 3 7 5 11 123 -> next element is 10
+  123 is previous element <- 10 3 7 5 11 123 -> next element is 10
 ```
 
 ## Rules
