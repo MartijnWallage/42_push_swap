@@ -12,13 +12,13 @@ Score: 125%.
 
 Push_swap is a program which sorts any series of unique positive numbers, using two "stacks", as the subject call them, though they are better thought of as discs.
 
-Both discs have a "current element": you can imagine a reading head, or the ball in a roulette wheel, which always picks out one element and can move only to the next or to the previous element.
+Both discs have a current, next and previous element: you can imagine a reading head, or the ball in a roulette wheel, which always picks out one element and can move only to the next or to the previous element.
 
 ```
-                           current element
-                                  |
-                                  v
-  123 is previous element <- 10 3 7 5 11 123 -> next element is 10
+    current element
+          |
+          v
+  <- 10 3 7 5 11 123 -> wrap around
 ```
 
 ## Rules
@@ -52,10 +52,10 @@ I tried many different algorithms but ended up implementing something close to t
 
 Question: why do successful push_swap algorithms start by pushing almost all numbers to the B stack? You might think that sometimes two numbers in the A stack can be sorted by, for example, swapping them. Or they are already sorted and we can just move on to the next element.
 
-Answer: when you push a number to the B stack, the current number on the A stack will automatically become the next element. So you get that operation for free.
+Answer: when you push an element to the B stack, the next element on the A stack will automatically become the current element. So you get that operation for free.
 
 ## Bonus
 
-A checker. Once you have functions for all the operations, which you do if you have written push_swap, it is straightforward to write a checker. This is one of the easiest bonuses in the 42 core curriculum.
+Write a checker. Once you have functions for all the operations, which you do if you have written push_swap, it is straightforward to write a checker. This is one of the easiest bonuses in the 42 core curriculum.
 
 A better kind of checker, very useful for evaluations, is the <a href="https://github.com/o-reo/push_swap_visualizer">Push_swap Visualizer</a>
