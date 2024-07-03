@@ -12,7 +12,9 @@ Score: 125%.
 
 Push_swap is a program which sorts any series of unique positive numbers, using two "stacks", as the subject call them, though they are better thought of as discs: they rotate.
 
-Both discs have a current, next and previous element: you can imagine a reading head, or the ball in a roulette wheel, which always picks out one element and can move only to the next or to the previous element.
+Both discs have a current, next and previous element: you can imagine a reading head, or the ball in a roulette wheel, which always picks out one element and can move only to the next or to the previous element. 
+
+Of each disc, the next element of the last element is the first element, and the previous element of the first element is the last element.
 
 ```
     current element
